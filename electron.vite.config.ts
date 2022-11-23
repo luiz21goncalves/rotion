@@ -5,22 +5,22 @@ import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
   main: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
   },
   preload: {
-    plugins: [externalizeDepsPlugin()]
+    plugins: [externalizeDepsPlugin()],
   },
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
-      }
+        '@renderer': resolve('src/renderer/src'),
+      },
     },
     plugins: [react()],
     css: {
       postcss: {
-        plugins: [tailwindcss({ config: './src/renderer/tailwind.config.js' })]
-      }
-    }
-  }
+        plugins: [tailwindcss({ config: './src/renderer/tailwind.config.js' })],
+      },
+    },
+  },
 })
