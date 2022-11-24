@@ -1,7 +1,8 @@
-import * as Navigation from './Navigation'
 import clsx from 'clsx'
 import { CaretDoubleLeft } from 'phosphor-react'
+
 import { CreatePage } from './CreatePage'
+import * as Navigation from './Navigation'
 import { Profile } from './Profile'
 import { Search } from './Search'
 

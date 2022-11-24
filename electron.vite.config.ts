@@ -1,6 +1,6 @@
-import path from 'node:path'
-import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
 import react from '@vitejs/plugin-react'
+import { defineConfig, externalizeDepsPlugin } from 'electron-vite'
+import path from 'node:path'
 import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
