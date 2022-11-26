@@ -15,7 +15,7 @@ export function Editor() {
       Highlight,
       Typography,
       Placeholder.configure({
-        placeholder: 'Untitled',
+        placeholder: 'Sem Título',
         emptyEditorClass:
           'before:content-[attr(data-placeholder)] before:text-gray-500 before:h-0 before:float-left before:pointer-events-none',
       }),

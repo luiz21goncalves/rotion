@@ -38,7 +38,7 @@ export function SearchBar() {
 
         <Command.Item className="py-3 px-4 text-rotion-50 text-sm flex items-center gap-2 hover:bg-rotion-700 aria-selected:!bg-rotion-600">
           <File className="w-4 h-4" />
-          Untitled
+          Sem Título
         </Command.Item>
 
         <Command.Item className="py-3 px-4 text-rotion-50 text-sm flex items-center gap-2 hover:bg-rotion-700 aria-selected:!bg-rotion-600">
