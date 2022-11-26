@@ -1,6 +1,9 @@
 import { ElectronAPI, electronAPI } from '@electron-toolkit/preload'
 import { contextBridge, ipcRenderer } from 'electron'
 
+import { IPC } from '@/shared/constants/ipc'
+import type { FetchAllDocumentsResponse } from '@/shared/types/ipc'
+
 declare global {
   export interface Window {
     electron: ElectronAPI
@@ -9,10 +12,8 @@ declare global {
 }
 
 const api = {
-  fetchDocuments(): Promise<
-    Array<{ id: number; title: string; content: string }>
-  > {
-    return ipcRenderer.invoke('fetch-documents')
+  fetchDocuments(): Promise<FetchAllDocumentsResponse> {
+    return ipcRenderer.invoke(IPC.DOCUMENTS.FETCH_ALL)
   },
 }
 
