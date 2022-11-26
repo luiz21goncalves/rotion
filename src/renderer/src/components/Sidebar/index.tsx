@@ -3,8 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CaretDoubleLeft } from 'phosphor-react'
 
-import { CreatePage } from './CreatePage'
 import * as Navigation from './Navigation'
+import { NewDocument } from './NewDocument'
 import { Profile } from './Profile'
 import { Search } from './Search'
 
@@ -63,7 +63,7 @@ export function Sidebar() {
           </Navigation.Section>
         </Navigation.Root>
 
-        <CreatePage />
+        <NewDocument />
       </div>
     </Collapsible.Content>
   )
