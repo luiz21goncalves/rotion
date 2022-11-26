@@ -1,7 +1,9 @@
 import Store from 'electron-store'
 
+import type { Document } from '@/shared/types/ipc'
+
 type StoreType = {
-  documents: Record<string, unknown>
+  documents: Record<string, Document>
 }
 
 export const store = new Store<StoreType>({
