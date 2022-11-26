@@ -3,6 +3,8 @@ import { useQuery } from '@tanstack/react-query'
 import clsx from 'clsx'
 import { CaretDoubleLeft } from 'phosphor-react'
 
+import { QUERY_KEYS } from '@/shared/constants/query-keys'
+
 import * as Navigation from './Navigation'
 import { NewDocument } from './NewDocument'
 import { Profile } from './Profile'
@@ -11,7 +13,7 @@ import { Search } from './Search'
 export function Sidebar() {
   const isMacOS = process.platform === 'darwin'
 
-  const { data } = useQuery(['documents'], async () => {
+  const { data } = useQuery([QUERY_KEYS.DOCUMENTS.FETCH_ALL], async () => {
     const response = await window.api.fetchDocuments()
     return response.data
   })
