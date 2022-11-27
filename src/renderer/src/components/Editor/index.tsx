@@ -5,12 +5,18 @@ import Typography from '@tiptap/extension-typography'
 import { EditorContent, useEditor } from '@tiptap/react'
 import StarterKit from '@tiptap/starter-kit'
 
-type EditorProps = {
+export type OnContentUpdatedParams = {
+  title: string
   content: string
 }
 
+type EditorProps = {
+  content: string
+  onContentUpdated: (data: OnContentUpdatedParams) => void
+}
+
 export function Editor(props: EditorProps) {
-  const { content } = props
+  const { content, onContentUpdated } = props
 
   const editor = useEditor({
     extensions: [
@@ -26,6 +32,15 @@ export function Editor(props: EditorProps) {
           'before:content-[attr(data-placeholder)] before:text-gray-500 before:h-0 before:float-left before:pointer-events-none',
       }),
     ],
+    onUpdate: ({ editor }) => {
+      const contentRegex = /(<h1>(?<title>.+?)<\/h1>(?<content>.+)?)/
+      const parsedContent = editor.getHTML().match(contentRegex)?.groups
+
+      const title = parsedContent?.title ?? 'Sem Título'
+      const content = parsedContent?.content ?? ''
+
+      onContentUpdated({ title, content })
+    },
     content,
     autofocus: 'end',
     editorProps: {
