@@ -1,4 +1,3 @@
-import { ElectronAPI, electronAPI } from '@electron-toolkit/preload'
 import { contextBridge, ipcRenderer } from 'electron'
 
 import { IPC } from '@/shared/constants/ipc'
@@ -13,7 +12,6 @@ import type {
 
 declare global {
   export interface Window {
-    electron: ElectronAPI
     api: typeof api
   }
 }
@@ -38,11 +36,18 @@ const api = {
   deleteDocument(params: DeleteDocumentRequest): Promise<void> {
     return ipcRenderer.invoke(IPC.DOCUMENTS.DELETE, params)
   },
+
+  onNewDocumentRequest(callback: () => void) {
+    ipcRenderer.on(IPC.DOCUMENTS.NEW, callback)
+
+    return () => {
+      ipcRenderer.off(IPC.DOCUMENTS.NEW, callback)
+    }
+  },
 }
 
 if (process.contextIsolated) {
   try {
-    contextBridge.exposeInMainWorld('electron', electronAPI)
     contextBridge.exposeInMainWorld('api', api)
   } catch (error) {
     console.error(error)
