@@ -3,6 +3,8 @@ import { app, shell, BrowserWindow } from 'electron'
 import { createFileRoute, createURLRoute } from 'electron-router-dom'
 import path from 'node:path'
 
+import { createTry } from './tray'
+
 import './ipc'
 import './store'
 
@@ -25,6 +27,8 @@ function createWindow(): void {
       sandbox: false,
     },
   })
+
+  createTry(mainWindow)
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
