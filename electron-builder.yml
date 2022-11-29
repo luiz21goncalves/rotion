@@ -30,6 +30,7 @@ linux:
   target:
     - tar.gz
     - deb
+    - rpm
   maintainer: ${homepage}
   synopsis: ${description}
   category: Utility
